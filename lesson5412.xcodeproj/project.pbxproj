@@ -48,6 +48,7 @@
 		6D6558B8292A23A400CB8A0E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6DAD20B1292A2D9200886580 /* BeerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellModel.swift; sourceTree = "<group>"; };
 		6DAD20B3292A2DA000886580 /* BeerCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellController.swift; sourceTree = "<group>"; };
+		6DBF4328292E40260059F7A1 /* lesson5412 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "lesson5412 copy-Info.plist"; path = "/Users/ake11a/Swift/GT/4/lesson5412/lesson5412 copy-Info.plist"; sourceTree = "<absolute>"; };
 		A09738368DFD871B74F44906 /* Pods-lesson5412.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5412.release.xcconfig"; path = "Target Support Files/Pods-lesson5412/Pods-lesson5412.release.xcconfig"; sourceTree = "<group>"; };
 		C04D22176DEE4F00C172F0A8 /* Pods-lesson5412.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5412.debug.xcconfig"; path = "Target Support Files/Pods-lesson5412/Pods-lesson5412.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +80,7 @@
 				6D4ECBCA291FEA100023FB6E /* Products */,
 				74987E0D90C29A5415AAF824 /* Pods */,
 				676067D243A045BD6B66326B /* Frameworks */,
+				6DBF4328292E40260059F7A1 /* lesson5412 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
