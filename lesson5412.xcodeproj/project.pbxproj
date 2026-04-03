@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6CA5D1D456B004A88DFCAFF2 /* Pods_lesson5412.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388F51CC81AE986EF1D8075C /* Pods_lesson5412.framework */; };
 		6D4ECBCD291FEA100023FB6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ECBCC291FEA100023FB6E /* AppDelegate.swift */; };
 		6D4ECBCF291FEA100023FB6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ECBCE291FEA100023FB6E /* SceneDelegate.swift */; };
 		6D4ECBD1291FEA100023FB6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ECBD0291FEA100023FB6E /* ViewController.swift */; };
@@ -25,10 +24,11 @@
 		6D6558B9292A23A400CB8A0E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558B8292A23A400CB8A0E /* DatabaseManager.swift */; };
 		6DAD20B2292A2D9200886580 /* BeerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD20B1292A2D9200886580 /* BeerCellModel.swift */; };
 		6DAD20B4292A2DA000886580 /* BeerCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD20B3292A2DA000886580 /* BeerCellController.swift */; };
+		8A11AA111111111111111111 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A11AA111111111111111113 /* SnapKit */; };
+		8A11AA111111111111111112 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A11AA111111111111111114 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		388F51CC81AE986EF1D8075C /* Pods_lesson5412.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lesson5412.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4ECBC9291FEA100023FB6E /* lesson5412.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lesson5412.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4ECBCC291FEA100023FB6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D4ECBCE291FEA100023FB6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,8 +49,6 @@
 		6DAD20B1292A2D9200886580 /* BeerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellModel.swift; sourceTree = "<group>"; };
 		6DAD20B3292A2DA000886580 /* BeerCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellController.swift; sourceTree = "<group>"; };
 		6DBF4328292E40260059F7A1 /* lesson5412 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "lesson5412 copy-Info.plist"; path = "/Users/ake11a/Swift/GT/4/lesson5412/lesson5412 copy-Info.plist"; sourceTree = "<absolute>"; };
-		A09738368DFD871B74F44906 /* Pods-lesson5412.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5412.release.xcconfig"; path = "Target Support Files/Pods-lesson5412/Pods-lesson5412.release.xcconfig"; sourceTree = "<group>"; };
-		C04D22176DEE4F00C172F0A8 /* Pods-lesson5412.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson5412.debug.xcconfig"; path = "Target Support Files/Pods-lesson5412/Pods-lesson5412.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,28 +56,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CA5D1D456B004A88DFCAFF2 /* Pods_lesson5412.framework in Frameworks */,
+				8A11AA111111111111111112 /* RealmSwift in Frameworks */,
+				8A11AA111111111111111111 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		676067D243A045BD6B66326B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				388F51CC81AE986EF1D8075C /* Pods_lesson5412.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		6D4ECBC0291FEA100023FB6E = {
 			isa = PBXGroup;
 			children = (
 				6D4ECBCB291FEA100023FB6E /* lesson5412 */,
 				6D4ECBCA291FEA100023FB6E /* Products */,
-				74987E0D90C29A5415AAF824 /* Pods */,
-				676067D243A045BD6B66326B /* Frameworks */,
 				6DBF4328292E40260059F7A1 /* lesson5412 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -173,15 +162,6 @@
 			path = BeerCell;
 			sourceTree = "<group>";
 		};
-		74987E0D90C29A5415AAF824 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C04D22176DEE4F00C172F0A8 /* Pods-lesson5412.debug.xcconfig */,
-				A09738368DFD871B74F44906 /* Pods-lesson5412.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,17 +169,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D4ECBDD291FEA180023FB6E /* Build configuration list for PBXNativeTarget "lesson5412" */;
 			buildPhases = (
-				5B816D34E5EF52F4B4E9FB22 /* [CP] Check Pods Manifest.lock */,
 				6D4ECBC5291FEA100023FB6E /* Sources */,
 				6D4ECBC6291FEA100023FB6E /* Frameworks */,
 				6D4ECBC7291FEA100023FB6E /* Resources */,
-				1A81E212C100FD030BD6E8C5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = lesson5412;
+			packageProductDependencies = (
+				8A11AA111111111111111113 /* SnapKit */,
+				8A11AA111111111111111114 /* RealmSwift */,
+			);
 			productName = lesson5412;
 			productReference = 6D4ECBC9291FEA100023FB6E /* lesson5412.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +210,10 @@
 				Base,
 			);
 			mainGroup = 6D4ECBC0291FEA100023FB6E;
+			packageReferences = (
+				8A11AA111111111111111115 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8A11AA111111111111111116 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 6D4ECBCA291FEA100023FB6E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -249,48 +235,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1A81E212C100FD030BD6E8C5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-lesson5412/Pods-lesson5412-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-lesson5412/Pods-lesson5412-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lesson5412/Pods-lesson5412-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5B816D34E5EF52F4B4E9FB22 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-lesson5412-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D4ECBC5291FEA100023FB6E /* Sources */ = {
@@ -452,7 +396,6 @@
 		};
 		6D4ECBDE291FEA180023FB6E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C04D22176DEE4F00C172F0A8 /* Pods-lesson5412.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -481,7 +424,6 @@
 		};
 		6D4ECBDF291FEA180023FB6E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A09738368DFD871B74F44906 /* Pods-lesson5412.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,6 +472,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A11AA111111111111111115 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		8A11AA111111111111111116 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.32.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A11AA111111111111111113 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A11AA111111111111111115 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		8A11AA111111111111111114 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A11AA111111111111111116 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6D4ECBC1291FEA100023FB6E /* Project object */;
 }

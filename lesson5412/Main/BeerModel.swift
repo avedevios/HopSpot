@@ -27,4 +27,6 @@ class BeerModel {
 
 struct Beer: Codable {
     var name: String
+    var tagline: String
+    var abv: Double?
 }

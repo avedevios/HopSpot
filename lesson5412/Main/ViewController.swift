@@ -61,12 +61,19 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "beer_cell", for: indexPath) as! BeerCell
-        cell.beerNameLabel.text = controller.getBeers()[indexPath.row].name
+        let beer = controller.getBeers()[indexPath.row]
+        cell.beerNameLabel.text = beer.name
+        let abvText = beer.abv.map { String(format: "ABV %.1f%%", $0) } ?? "ABV n/a"
+        cell.beerSubtitleLabel.text = "\(beer.tagline) • \(abvText)"
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
+    }
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
@@ -81,4 +88,3 @@ extension ViewController: UITableViewDelegate {
         }
     }
 }
-
