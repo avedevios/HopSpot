@@ -1,6 +1,6 @@
 //
 //  FavouritesController.swift
-//  lesson5412
+//  HopSpot
 //
 //  Created by ake11a on 2022-11-20.
 //
@@ -27,10 +27,6 @@ class FavouritesController {
     
     func getFavouritesBeers() -> Results<BeerRealm> {
         return favouriteBeers!
-    }
-    
-    func deleteFavouriteBeer(index: Int) {
-        model?.deleteFavouriteBeer(index: index)
     }
     
     func updateFavourites() {

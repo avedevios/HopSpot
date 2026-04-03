@@ -1,6 +1,6 @@
 //
 //  BeerModel.swift
-//  lesson5412
+//  HopSpot
 //
 //  Created by ake11a on 2022-11-20.
 //
@@ -27,5 +27,6 @@ class BeerModel {
 
 struct Beer: Codable {
     var name: String
-    var image_url: String
+    var tagline: String
+    var abv: Double?
 }

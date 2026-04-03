@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  lesson5412
+//  HopSpot
 //
 //  Created by ake11a on 2022-11-12.
 //

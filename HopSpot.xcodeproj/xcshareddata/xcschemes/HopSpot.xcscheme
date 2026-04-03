@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D4ECBC8291FEA100023FB6E"
-               BuildableName = "lesson5412.app"
-               BlueprintName = "lesson5412"
-               ReferencedContainer = "container:lesson5412.xcodeproj">
+               BuildableName = "HopSpot.app"
+               BlueprintName = "HopSpot"
+               ReferencedContainer = "container:HopSpot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D4ECBC8291FEA100023FB6E"
-            BuildableName = "lesson5412.app"
-            BlueprintName = "lesson5412"
-            ReferencedContainer = "container:lesson5412.xcodeproj">
+            BuildableName = "HopSpot.app"
+            BlueprintName = "HopSpot"
+            ReferencedContainer = "container:HopSpot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D4ECBC8291FEA100023FB6E"
-            BuildableName = "lesson5412.app"
-            BlueprintName = "lesson5412"
-            ReferencedContainer = "container:lesson5412.xcodeproj">
+            BuildableName = "HopSpot.app"
+            BlueprintName = "HopSpot"
+            ReferencedContainer = "container:HopSpot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

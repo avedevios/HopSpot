@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6D4ECBC9291FEA100023FB6E /* lesson5412.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lesson5412.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D4ECBC9291FEA100023FB6E /* HopSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HopSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4ECBCC291FEA100023FB6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D4ECBCE291FEA100023FB6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6D4ECBD0291FEA100023FB6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +48,6 @@
 		6D6558B8292A23A400CB8A0E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6DAD20B1292A2D9200886580 /* BeerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellModel.swift; sourceTree = "<group>"; };
 		6DAD20B3292A2DA000886580 /* BeerCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellController.swift; sourceTree = "<group>"; };
-		6DBF4328292E40260059F7A1 /* lesson5412 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "lesson5412 copy-Info.plist"; path = "/Users/ake11a/Swift/GT/4/lesson5412/lesson5412 copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,23 +66,6 @@
 		6D4ECBC0291FEA100023FB6E = {
 			isa = PBXGroup;
 			children = (
-				6D4ECBCB291FEA100023FB6E /* lesson5412 */,
-				6D4ECBCA291FEA100023FB6E /* Products */,
-				6DBF4328292E40260059F7A1 /* lesson5412 copy-Info.plist */,
-			);
-			sourceTree = "<group>";
-		};
-		6D4ECBCA291FEA100023FB6E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6D4ECBC9291FEA100023FB6E /* lesson5412.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6D4ECBCB291FEA100023FB6E /* lesson5412 */ = {
-			isa = PBXGroup;
-			children = (
 				6DAD20AF292A2D0E00886580 /* Extensions */,
 				6DAD20AE292A2CB900886580 /* App */,
 				6DAD20AD292A2C6400886580 /* Database */,
@@ -91,8 +73,16 @@
 				6D6558B3292A203B00CB8A0E /* Favourites */,
 				6D6558AA292A1AC700CB8A0E /* Main */,
 				6D4ECBDA291FEA180023FB6E /* Info.plist */,
+				6D4ECBCA291FEA100023FB6E /* Products */,
 			);
-			path = lesson5412;
+			sourceTree = "<group>";
+		};
+		6D4ECBCA291FEA100023FB6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D4ECBC9291FEA100023FB6E /* HopSpot.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		6D6558AA292A1AC700CB8A0E /* Main */ = {
@@ -165,9 +155,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D4ECBC8291FEA100023FB6E /* lesson5412 */ = {
+		6D4ECBC8291FEA100023FB6E /* HopSpot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D4ECBDD291FEA180023FB6E /* Build configuration list for PBXNativeTarget "lesson5412" */;
+			buildConfigurationList = 6D4ECBDD291FEA180023FB6E /* Build configuration list for PBXNativeTarget "HopSpot" */;
 			buildPhases = (
 				6D4ECBC5291FEA100023FB6E /* Sources */,
 				6D4ECBC6291FEA100023FB6E /* Frameworks */,
@@ -177,13 +167,13 @@
 			);
 			dependencies = (
 			);
-			name = lesson5412;
+			name = HopSpot;
 			packageProductDependencies = (
 				8A11AA111111111111111113 /* SnapKit */,
 				8A11AA111111111111111114 /* RealmSwift */,
 			);
-			productName = lesson5412;
-			productReference = 6D4ECBC9291FEA100023FB6E /* lesson5412.app */;
+			productName = HopSpot;
+			productReference = 6D4ECBC9291FEA100023FB6E /* HopSpot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +191,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D4ECBC4291FEA100023FB6E /* Build configuration list for PBXProject "lesson5412" */;
+			buildConfigurationList = 6D4ECBC4291FEA100023FB6E /* Build configuration list for PBXProject "HopSpot" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,7 +208,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D4ECBC8291FEA100023FB6E /* lesson5412 */,
+				6D4ECBC8291FEA100023FB6E /* HopSpot */,
 			);
 		};
 /* End PBXProject section */
@@ -403,7 +393,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 65DRR277K2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = lesson5412/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -414,7 +404,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gt.lesson5412;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ake11a.HopSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -431,7 +421,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 65DRR277K2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = lesson5412/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -442,7 +432,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gt.lesson5412;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ake11a.HopSpot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -453,7 +443,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D4ECBC4291FEA100023FB6E /* Build configuration list for PBXProject "lesson5412" */ = {
+		6D4ECBC4291FEA100023FB6E /* Build configuration list for PBXProject "HopSpot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D4ECBDB291FEA180023FB6E /* Debug */,
@@ -462,7 +452,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D4ECBDD291FEA180023FB6E /* Build configuration list for PBXNativeTarget "lesson5412" */ = {
+		6D4ECBDD291FEA180023FB6E /* Build configuration list for PBXNativeTarget "HopSpot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D4ECBDE291FEA180023FB6E /* Debug */,
@@ -486,8 +476,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				kind = exactVersion;
-				version = 10.32.3;
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

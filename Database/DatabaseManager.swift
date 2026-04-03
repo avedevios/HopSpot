@@ -1,6 +1,6 @@
 //
 //  DatabaseManager.swift
-//  lesson5412
+//  HopSpot
 //
 //  Created by ake11a on 2022-11-20.
 //
@@ -22,12 +22,6 @@ class DatabaseManager {
     func setData(beer: BeerRealm) {
         try! realm.write( {
             realm.add(beer)
-        })
-    }
-    
-    func deleteData(beer: BeerRealm) {
-        try! realm.write( {
-            realm.delete(beer)
         })
     }
 }
