@@ -1,5 +1,5 @@
 //
-//  BeerModel.swift
+//  BeerListModel.swift
 //  HopSpot
 //
 //  Created by ake11a on 2022-11-20.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-class BeerModel {
+class BeerListModel {
     
-    private weak var controller: BeerController!
+    private weak var controller: BeerListController!
     
     private var networkManager = NetworkManager()
     
-    init(controller: BeerController!) {
+    init(controller: BeerListController!) {
         self.controller = controller
     }
         

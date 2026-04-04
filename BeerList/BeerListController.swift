@@ -1,5 +1,5 @@
 //
-//  BeerController.swift
+//  BeerListController.swift
 //  HopSpot
 //
 //  Created by ake11a on 2022-11-20.
@@ -7,17 +7,17 @@
 
 import Foundation
 
-class BeerController {
+class BeerListController {
     
-    public weak var view: ViewController!
+    public weak var view: BeerListViewController!
     
-    private var model: BeerModel?
+    private var model: BeerListModel?
     
     private var beers: [Beer] = []
     
-    init(view: ViewController) {
+    init(view: BeerListViewController) {
         self.view = view
-        self.model = BeerModel(controller: self)
+        self.model = BeerListModel(controller: self)
     }
     
     func updateTableView() {

@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class FavouritesView: UIViewController {
+class FavoritesView: UIViewController {
     
-    private var controller: FavouritesController!
+    private var controller: FavoritesController!
     
     private lazy var favoritesTableView: UITableView = {
         let tableView = UITableView()
@@ -24,9 +24,9 @@ class FavouritesView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        self.controller = FavouritesController(view: self)
+        self.controller = FavoritesController(view: self)
 
-        controller.updateFavourites()
+        controller.updateFavorites()
         
         setupSubviews()
     }
@@ -42,14 +42,14 @@ class FavouritesView: UIViewController {
     }
 }
 
-extension FavouritesView: UITableViewDataSource {
+extension FavoritesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return controller.getFavouritesBeers().count
+        return controller.getFavoriteBeers().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fav_cell", for: indexPath)
-        cell.textLabel?.text = controller.getFavouritesBeers()[indexPath.row].name
+        cell.textLabel?.text = controller.getFavoriteBeers()[indexPath.row].name
         return cell
     }
     

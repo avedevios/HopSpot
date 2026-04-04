@@ -17,7 +17,7 @@ class BeerCellModel {
     }
     
     func addFavourite(title: String) {
-        let beer = BeerRealm()
+        let beer = BeerRealmObject()
         beer.name = title
 
         database.setData(beer: beer)

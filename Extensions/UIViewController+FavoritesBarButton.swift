@@ -1,5 +1,5 @@
 //
-//  ExtensionsUIViewController.swift
+//  UIViewController+FavoritesBarButton.swift
 //  HopSpot
 //
 //  Created by ake11a on 2022-11-20.

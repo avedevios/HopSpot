@@ -4,4 +4,12 @@
    <FileRef
       location = "self:">
    </FileRef>
+   <Group
+      location = "group:BeerList"
+      name = "BeerList">
+      <Group
+         location = "group:BeerCell"
+         name = "BeerCell">
+      </Group>
+   </Group>
 </Workspace>

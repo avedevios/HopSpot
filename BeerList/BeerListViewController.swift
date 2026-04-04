@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BeerListViewController.swift
 //  HopSpot
 //
 //  Created by ake11a on 2022-11-12.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BeerListViewController: UIViewController {
     
-    private var controller: BeerController!
+    private var controller: BeerListController!
     
     private lazy var beersTableView: UITableView = {
         let tableView = UITableView()
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.controller = BeerController(view: self)
+        self.controller = BeerListController(view: self)
         
         setupSubviews()
         
@@ -50,11 +50,11 @@ class ViewController: UIViewController {
     }
     
     @objc func favoritesBarButtonAction() {
-        navigationController?.pushViewController(FavouritesView(), animated: true)
+        navigationController?.pushViewController(FavoritesView(), animated: true)
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension BeerListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return controller.getBeers().count
     }
@@ -69,7 +69,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension BeerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }

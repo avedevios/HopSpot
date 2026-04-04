@@ -10,16 +10,16 @@ import RealmSwift
 
 class DatabaseManager {
     
-    private var beers: Results<BeerRealm>?
+    private var beers: Results<BeerRealmObject>?
     
     private let realm = try! Realm()
     
-    func getData() -> Results<BeerRealm> {
-        beers = realm.objects(BeerRealm.self)
+    func getData() -> Results<BeerRealmObject> {
+        beers = realm.objects(BeerRealmObject.self)
         return beers!
     }
     
-    func setData(beer: BeerRealm) {
+    func setData(beer: BeerRealmObject) {
         try! realm.write( {
             realm.add(beer)
         })
