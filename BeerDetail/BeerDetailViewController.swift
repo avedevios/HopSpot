@@ -14,6 +14,7 @@ class BeerDetailViewController: UIViewController {
     private var scrollView: UIScrollView!
     private var contentView: UIView!
     private var beerImageView: UIImageView!
+    private var imageLoadingIndicator: UIActivityIndicatorView!
     private var nameLabel: UILabel!
     private var taglineLabel: UILabel!
     private var activityIndicator: UIActivityIndicatorView!
@@ -42,10 +43,6 @@ class BeerDetailViewController: UIViewController {
         let item = controller.getListItem()
         nameLabel.text = item.name
         taglineLabel.text = item.tagline
-        
-        // Show placeholder for now, full image loads with details
-        beerImageView.image = UIImage(systemName: "photo")
-        beerImageView.tintColor = .systemGray
         
         // Kick off async load of full details
         controller.loadDetails()
@@ -79,10 +76,17 @@ class BeerDetailViewController: UIViewController {
     private func setupImageView() {
         beerImageView = UIImageView()
         beerImageView.contentMode = .scaleAspectFit
-        beerImageView.backgroundColor = .systemGray6
+        beerImageView.backgroundColor = .systemBackground
         beerImageView.layer.cornerRadius = 12
         beerImageView.clipsToBounds = true
         contentView.addSubview(beerImageView)
+        
+        imageLoadingIndicator = UIActivityIndicatorView(style: .medium)
+        imageLoadingIndicator.hidesWhenStopped = true
+        contentView.addSubview(imageLoadingIndicator)
+        imageLoadingIndicator.snp.makeConstraints { make in
+            make.center.equalTo(beerImageView)
+        }
     }
     
     private func setupActivityIndicator() {
@@ -229,10 +233,20 @@ class BeerDetailViewController: UIViewController {
     // MARK: - Image loading
     
     private func loadImage(from url: URL) {
+        DispatchQueue.main.async {
+            self.imageLoadingIndicator.startAnimating()
+        }
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let data = data, error == nil, let image = UIImage(data: data) else { return }
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
+                DispatchQueue.main.async {
+                    self?.imageLoadingIndicator.stopAnimating()
+                }
+                return
+            }
             DispatchQueue.main.async {
                 self?.beerImageView.image = image
+                self?.imageLoadingIndicator.stopAnimating()
             }
         }
         task.resume()
