@@ -12,34 +12,63 @@ class BeerListModel {
     private weak var controller: BeerListController!
     
     private var networkManager = NetworkManager()
-    private var currentPage = 1
-    private let perPage = 30
+    private var database = DatabaseManager()
+    private let perPage = 80
     
     init(controller: BeerListController!) {
         self.controller = controller
     }
         
     func getBeers() {
-        print("🔄 Starting to fetch beers (page \(currentPage))...")
-        networkManager.getBeerList(page: currentPage, perPage: perPage) { beers in
-            print("📊 Received \(beers.count) beers from network")
-            self.controller.setBeers(beers: beers)
-            self.controller.updateTableView()
+        // Load only from cache on start
+        let cachedBeers = database.getCachedBeers()
+        print("💾 Loaded \(cachedBeers.count) beers from cache")
+        let cacheItems = cachedBeers.map { BeerListItem(id: $0.id, name: $0.name, tagline: $0.tagline, abv: $0.abv) }
+        controller.setBeers(beers: cacheItems)
+        controller.updateTableView()
+    }
+    
+    func getFavourites() {
+        let favourites = database.getFavouriteBeers()
+        let items = favourites.map { BeerListItem(id: $0.id, name: $0.name, tagline: $0.tagline, abv: $0.abv) }
+        controller.setBeers(beers: items)
+        controller.updateTableView()
+    }
+    
+    func fetchFromAPI() {
+        print("🌐 Fetching all beers from API...")
+        controller.setLoading(true)
+        fetchPage(1)
+    }
+    
+    private func fetchPage(_ page: Int) {
+        networkManager.getBeerList(page: page, perPage: perPage) { beers in
+            if beers.isEmpty {
+                print("✅ All pages fetched, reloading from cache")
+                self.controller.setLoading(false)
+                self.reloadFromCache()
+            } else {
+                print("📊 Page \(page): received \(beers.count) beers, saving to cache")
+                self.database.saveBeers(beers)
+                self.fetchPage(page + 1)
+            }
         }
     }
     
-    func loadMoreBeers() {
-        currentPage += 1
-        print("🔄 Loading next page (\(currentPage))...")
-        networkManager.getBeerList(page: currentPage, perPage: perPage) { beers in
-            print("📊 Received \(beers.count) beers from network (page \(self.currentPage))")
-            if !beers.isEmpty {
-                self.controller.addBeers(beers: beers)
-            } else {
-                print("⚠️ No more beers to load")
-                self.currentPage -= 1
-            }
-        }
+    private func reloadFromCache() {
+        let cached = database.getCachedBeers()
+        let items = cached.map { BeerListItem(id: $0.id, name: $0.name, tagline: $0.tagline, abv: $0.abv) }
+        self.controller.setBeers(beers: items)
+        self.controller.updateTableView()
+        self.controller.updateCacheCount()
+    }
+    
+    func getCacheCount() -> Int {
+        return database.getCachedBeers().count
+    }
+    
+    func isFavourite(id: Int) -> Bool {
+        return database.isFavourite(id: id)
     }
 }
 

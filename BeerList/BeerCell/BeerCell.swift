@@ -7,14 +7,12 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 class BeerCell: UITableViewCell {
     
     private var controller: BeerCellController!
     private var didSetupViews = false
-    
-    let realm = try! Realm()
+    private var beerId: Int?
     
     lazy var beerNameLabel: UILabel = {
         let label = UILabel()
@@ -31,14 +29,12 @@ class BeerCell: UITableViewCell {
         return label
     }()
     
-    lazy var likeImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "heart")
-        imageView.isUserInteractionEnabled = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(addFavoritesTap))
-        imageView.addGestureRecognizer(tap)
-        return imageView
+    lazy var likeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = .label
+        button.addTarget(self, action: #selector(addFavoritesTap), for: .touchUpInside)
+        return button
     }()
     
     override func layoutSubviews() {
@@ -49,20 +45,20 @@ class BeerCell: UITableViewCell {
 
         controller = BeerCellController(view: self)
 
-        addSubview(likeImageView)
+        addSubview(likeButton)
         addSubview(beerNameLabel)
         addSubview(beerSubtitleLabel)
 
-        likeImageView.snp.makeConstraints { make in
+        likeButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-20)
-            make.height.width.equalTo(50)
+            make.height.width.equalTo(44)
         }
 
         beerNameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.left.equalToSuperview().offset(20)
-            make.right.equalTo(likeImageView.snp.left).offset(-12)
+            make.right.equalTo(likeButton.snp.left).offset(-12)
         }
 
         beerSubtitleLabel.snp.makeConstraints { make in
@@ -73,7 +69,20 @@ class BeerCell: UITableViewCell {
         }
     }
     
+    var onFavouriteToggled: (() -> Void)?
+
     @objc func addFavoritesTap() {
-        controller.addFavourite(title: beerNameLabel.text!)
+        guard let id = beerId else { return }
+        controller.toggleFavourite(id: id)
+        let isFav = controller.isFavourite(id: id)
+        let icon = isFav ? "heart.fill" : "heart"
+        likeButton.setImage(UIImage(systemName: icon), for: .normal)
+        onFavouriteToggled?()
+    }
+    
+    func configure(with item: BeerListItem, isFavourite: Bool) {
+        beerId = item.id
+        let icon = isFavourite ? "heart.fill" : "heart"
+        likeButton.setImage(UIImage(systemName: icon), for: .normal)
     }
 }

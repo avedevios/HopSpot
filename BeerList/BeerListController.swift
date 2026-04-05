@@ -14,7 +14,7 @@ class BeerListController {
     private var model: BeerListModel?
     
     private var beers: [BeerListItem] = []
-    private var isLoadingMore = false
+    private var showingFavourites = false
     
     init(view: BeerListViewController) {
         self.view = view
@@ -37,14 +37,12 @@ class BeerListController {
     func setBeers(beers: [BeerListItem]) {
         print("📝 Controller received \(beers.count) beers")
         self.beers = beers
-        isLoadingMore = false
     }
     
     func addBeers(beers: [BeerListItem]) {
         print("📝 Controller adding \(beers.count) beers")
         self.beers.append(contentsOf: beers)
         insertNewRows(count: beers.count)
-        isLoadingMore = false
     }
     
     func getBeers() -> [BeerListItem] {
@@ -55,12 +53,35 @@ class BeerListController {
         model?.getBeers()
     }
     
-    func loadMoreBeers() {
-        guard !isLoadingMore else {
-            print("⚠️ Already loading more beers")
-            return
+    func toggleFavourites() {
+        showingFavourites = !showingFavourites
+        view.updateFavouritesButton(active: showingFavourites)
+        if showingFavourites {
+            model?.getFavourites()
+        } else {
+            model?.getBeers()
         }
-        isLoadingMore = true
-        model?.loadMoreBeers()
+    }
+    
+    func refreshIfNeeded() {
+        guard showingFavourites else { return }
+        model?.getFavourites()
+    }
+    
+    func fetchFromAPI() {
+        model?.fetchFromAPI()
+    }
+    
+    func isFavourite(id: Int?) -> Bool {
+        guard let id = id else { return false }
+        return model?.isFavourite(id: id) ?? false
+    }
+    
+    func setLoading(_ loading: Bool) {
+        view.setLoading(loading)
+    }
+    
+    func updateCacheCount() {
+        view.setCacheCount(model?.getCacheCount() ?? 0)
     }
 }

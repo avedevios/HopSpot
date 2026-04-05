@@ -113,15 +113,6 @@
 			path = BeerCell;
 			sourceTree = "<group>";
 		};
-		6DAD20B9292A2E2000886580 /* BeerDetail */ = {
-			isa = PBXGroup;
-			children = (
-				6DAD20B6292A2E0000886580 /* BeerDetailController.swift */,
-				6DAD20B8292A2E1000886580 /* BeerDetailViewController.swift */,
-			);
-			path = BeerDetail;
-			sourceTree = "<group>";
-		};
 		6D66A41A2F81596700A68B94 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +158,15 @@
 				6D6558B1292A1FB500CB8A0E /* UIViewController+FavoritesBarButton.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6DAD20B9292A2E2000886580 /* BeerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6DAD20B6292A2E0000886580 /* BeerDetailController.swift */,
+				6DAD20B8292A2E1000886580 /* BeerDetailViewController.swift */,
+			);
+			path = BeerDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

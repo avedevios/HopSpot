@@ -65,38 +65,40 @@ class NetworkManager {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("❌ Network error: \(error)")
+                print("❌ NetworkManager: Network error: \(error)")
                 DispatchQueue.main.async {
                     completion(nil)
                 }
                 return
             }
             guard let data = data else {
-                print("❌ No data received")
+                print("❌ NetworkManager: No data received")
                 DispatchQueue.main.async {
                     completion(nil)
                 }
                 return
             }
+            print("🌐 NetworkManager: Received \(data.count) bytes for beer details")
             
             // Decode on background thread to avoid blocking UI
             DispatchQueue.global(qos: .userInitiated).async {
                 do {
                     let beers = try JSONDecoder().decode([Beer].self, from: data)
-                    print("✅ Successfully decoded beer details")
+                    print("✅ NetworkManager: Successfully decoded beer details")
                     DispatchQueue.main.async {
                         completion(beers.first)
                     }
                 } catch {
-                    // If array decoding fails, try decoding as single object
+                    print("❌ NetworkManager: JSON decoding error: \(error)")
+                    // Try decoding as single object
                     do {
                         let beer = try JSONDecoder().decode(Beer.self, from: data)
-                        print("✅ Successfully decoded single beer object")
+                        print("✅ NetworkManager: Successfully decoded single beer object")
                         DispatchQueue.main.async {
                             completion(beer)
                         }
                     } catch {
-                        print("❌ JSON decoding error: \(error)")
+                        print("❌ NetworkManager: Single object decoding also failed: \(error)")
                         DispatchQueue.main.async {
                             completion(nil)
                         }
