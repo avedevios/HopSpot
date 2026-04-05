@@ -73,9 +73,7 @@ class BeerListViewController: UIViewController {
 
 extension BeerListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = controller.getBeers().count
-        print("📋 Table view asking for rows, returning: \(count)")
-        return count
+        return controller.getBeers().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

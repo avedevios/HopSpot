@@ -82,16 +82,24 @@ class NetworkManager {
             // Decode on background thread to avoid blocking UI
             DispatchQueue.global(qos: .userInitiated).async {
                 do {
-                    // The endpoint returns an array with a single item
                     let beers = try JSONDecoder().decode([Beer].self, from: data)
                     print("✅ Successfully decoded beer details")
                     DispatchQueue.main.async {
                         completion(beers.first)
                     }
                 } catch {
-                    print("❌ JSON decoding error: \(error)")
-                    DispatchQueue.main.async {
-                        completion(nil)
+                    // If array decoding fails, try decoding as single object
+                    do {
+                        let beer = try JSONDecoder().decode(Beer.self, from: data)
+                        print("✅ Successfully decoded single beer object")
+                        DispatchQueue.main.async {
+                            completion(beer)
+                        }
+                    } catch {
+                        print("❌ JSON decoding error: \(error)")
+                        DispatchQueue.main.async {
+                            completion(nil)
+                        }
                     }
                 }
             }

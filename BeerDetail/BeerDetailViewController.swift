@@ -215,6 +215,11 @@ class BeerDetailViewController: UIViewController {
         foodPairingLabel.text = "Food Pairing:\n" + controller.getFoodPairingText()
         ingredientsLabel.text = "Ingredients:\n" + controller.getIngredientsText()
         brewersTipsLabel.text = "Brewer's Tips:\n" + controller.getBrewersTipsText()
+        
+        // Load image if available
+        if let imageURLString = controller.getImageURL(), let imageURL = URL(string: imageURLString) {
+            loadImage(from: imageURL)
+        }
     }
     
     func showError(_ message: String) {

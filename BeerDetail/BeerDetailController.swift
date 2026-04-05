@@ -95,4 +95,8 @@ class BeerDetailController {
     func getBrewersTipsText() -> String {
         return beer?.brewers_tips ?? "No brewer's tips available"
     }
+    
+    func getImageURL() -> String? {
+        return beer?.image_url
+    }
 }
