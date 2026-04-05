@@ -49,22 +49,6 @@ class BeerListViewController: UIViewController {
         }
     }
     
-    func insertRows(indexPaths: [IndexPath]) {
-        DispatchQueue.main.async {
-            self.beersTableView.performBatchUpdates({
-                self.beersTableView.insertRows(at: indexPaths, with: .automatic)
-            })
-        }
-    }
-    
-    func beginTableUpdate() {
-        // Not needed anymore
-    }
-    
-    func endTableUpdate() {
-        // Not needed anymore
-    }
-    
     func setupSubviews() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(clearCacheAction))
@@ -195,30 +179,11 @@ extension BeerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("Delete logic")
-        }
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let item = controller.getBeers()[indexPath.row]
-        print("🍺 BeerListViewController: Selected beer at row \(indexPath.row): id=\(item.id ?? 0), name='\(item.name)'")
         let detailVC = BeerDetailViewController(listItem: item)
         navigationController?.pushViewController(detailVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     }
 }

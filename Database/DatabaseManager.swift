@@ -76,8 +76,4 @@ class DatabaseManager {
             print("❌ Error clearing cache: \(error)")
         }
     }
-    
-    func getData() -> Results<BeerRealmObject>? {
-        return realm?.objects(BeerRealmObject.self)
-    }
 }

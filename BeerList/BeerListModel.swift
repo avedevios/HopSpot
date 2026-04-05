@@ -126,8 +126,6 @@ struct Beer: Codable {
     var abv: Double?
     var ibu: Double?
     var ebc: Double?
-    var srm: Double?
-    var ph: Double?
     var food_pairing: [String]?
     var brewers_tips: String?
     var image: String?
