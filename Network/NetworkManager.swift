@@ -9,44 +9,51 @@ import Foundation
 
 class NetworkManager {
     
+    private let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 10
+        config.timeoutIntervalForResource = 10
+        return URLSession(configuration: config)
+    }()
+    
     // Fetches lightweight list items with pagination
-    func getBeerList(page: Int, perPage: Int, completion: @escaping ([BeerListItem]) -> ()) {
+    func getBeerList(page: Int, perPage: Int, completion: @escaping ([BeerListItem], Bool) -> ()) {
         print("🌐 NetworkManager: Starting beer list request (page \(page), per_page \(perPage))...")
         guard let url = URL(string: "https://punkapi-alxiw.amvera.io/v3/beers?page=\(page)&per_page=\(perPage)") else {
             print("❌ Invalid URL")
-            completion([])
+            completion([], false)
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
+                let isTimeout = (error as NSError).code == NSURLErrorTimedOut
                 print("❌ Network error: \(error)")
                 DispatchQueue.main.async {
-                    completion([])
+                    completion([], isTimeout)
                 }
                 return
             }
             guard let data = data else {
                 print("❌ No data received")
                 DispatchQueue.main.async {
-                    completion([])
+                    completion([], false)
                 }
                 return
             }
             print("🌐 Received data: \(data.count) bytes")
             
-            // Decode on background thread to avoid blocking UI
             DispatchQueue.global(qos: .userInitiated).async {
                 do {
                     let beers = try JSONDecoder().decode([BeerListItem].self, from: data)
                     print("✅ Successfully decoded \(beers.count) list items")
                     DispatchQueue.main.async {
-                        completion(beers)
+                        completion(beers, false)
                     }
                 } catch {
                     print("❌ JSON decoding error: \(error)")
                     DispatchQueue.main.async {
-                        completion([])
+                        completion([], false)
                     }
                 }
             }
@@ -63,7 +70,7 @@ class NetworkManager {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("❌ NetworkManager: Network error: \(error)")
                 DispatchQueue.main.async {

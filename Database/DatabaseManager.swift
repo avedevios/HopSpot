@@ -31,6 +31,18 @@ class DatabaseManager {
         return Array(realm.objects(BeerRealmObject.self).where { $0.isFavorite == true })
     }
     
+    // Clear all cached beers
+    func clearCache() {
+        do {
+            try realm.write {
+                realm.deleteAll()
+            }
+            print("💾 Cache cleared")
+        } catch {
+            print("❌ Error clearing cache: \(error)")
+        }
+    }
+    
     // Save or update beer in cache
     func saveBeer(_ beer: BeerListItem) {
         do {

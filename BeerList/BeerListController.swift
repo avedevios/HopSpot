@@ -72,6 +72,14 @@ class BeerListController {
         model?.fetchFromAPI()
     }
     
+    func cancelFetch() {
+        model?.cancelFetch()
+    }
+    
+    func clearCache() {
+        model?.clearCache()
+    }
+    
     func isFavourite(id: Int?) -> Bool {
         guard let id = id else { return false }
         return model?.isFavourite(id: id) ?? false
@@ -79,6 +87,18 @@ class BeerListController {
     
     func setLoading(_ loading: Bool) {
         view.setLoading(loading)
+    }
+    
+    func showFetchDone() {
+        view.showFetchDone()
+    }
+    
+    func showFetchError() {
+        view.showFetchError()
+    }
+    
+    func showPageDone(page: Int, completion: @escaping () -> Void) {
+        view.showPageDone(page: page, completion: completion)
     }
     
     func updateCacheCount() {

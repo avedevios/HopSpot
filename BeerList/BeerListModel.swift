@@ -13,7 +13,8 @@ class BeerListModel {
     
     private var networkManager = NetworkManager()
     private var database = DatabaseManager()
-    private let perPage = 80
+    private let perPage = 50
+    private var isCancelled = false
     
     init(controller: BeerListController!) {
         self.controller = controller
@@ -37,20 +38,49 @@ class BeerListModel {
     
     func fetchFromAPI() {
         print("🌐 Fetching all beers from API...")
+        isCancelled = false
         controller.setLoading(true)
         fetchPage(1)
     }
     
+    func cancelFetch() {
+        isCancelled = true
+    }
+    
     private func fetchPage(_ page: Int) {
-        networkManager.getBeerList(page: page, perPage: perPage) { beers in
+        guard !isCancelled else {
+            print("🛑 Fetch cancelled before page \(page)")
+            controller.showFetchDone()
+            return
+        }
+        guard page <= 50 else {
+            print("⚠️ Page limit reached, stopping fetch")
+            controller.showFetchDone()
+            reloadFromCache()
+            return
+        }
+        networkManager.getBeerList(page: page, perPage: perPage) { beers, isTimeout in
+            if isTimeout {
+                print("⏱ Timeout on page \(page)")
+                self.controller.showFetchError()
+                return
+            }
             if beers.isEmpty {
                 print("✅ All pages fetched, reloading from cache")
-                self.controller.setLoading(false)
+                self.controller.showFetchDone()
                 self.reloadFromCache()
             } else {
                 print("📊 Page \(page): received \(beers.count) beers, saving to cache")
                 self.database.saveBeers(beers)
-                self.fetchPage(page + 1)
+                self.reloadFromCache()
+                if self.isCancelled {
+                    print("🛑 Fetch cancelled after page \(page)")
+                    self.controller.showFetchDone()
+                    return
+                }
+                self.controller.showPageDone(page: page) {
+                    self.fetchPage(page + 1)
+                }
             }
         }
     }
@@ -65,6 +95,13 @@ class BeerListModel {
     
     func getCacheCount() -> Int {
         return database.getCachedBeers().count
+    }
+    
+    func clearCache() {
+        database.clearCache()
+        controller.setBeers(beers: [])
+        controller.updateTableView()
+        controller.updateCacheCount()
     }
     
     func isFavourite(id: Int) -> Bool {

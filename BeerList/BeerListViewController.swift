@@ -11,6 +11,7 @@ import SnapKit
 class BeerListViewController: UIViewController {
     
     private var controller: BeerListController!
+    private var isLoading = false
     
     private let cacheCountLabel: UILabel = {
         let label = UILabel()
@@ -66,6 +67,7 @@ class BeerListViewController: UIViewController {
     
     func setupSubviews() {
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(clearCacheAction))
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favoritesBarButtonAction)),
             UIBarButtonItem(image: UIImage(systemName: "arrow.down.circle"), style: .plain, target: self, action: #selector(fetchFromAPIAction))
@@ -91,18 +93,74 @@ class BeerListViewController: UIViewController {
     }
     
     @objc func fetchFromAPIAction() {
-        controller.fetchFromAPI()
+        if isLoading {
+            controller.cancelFetch()
+        } else {
+            controller.fetchFromAPI()
+        }
+    }
+    
+    @objc func clearCacheAction() {
+        let alert = UIAlertController(title: "Clear cache", message: "All beers will be removed from the local database.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Clear", style: .destructive) { [weak self] _ in
+            self?.controller.clearCache()
+        })
+        present(alert, animated: true)
     }
     
     func setLoading(_ loading: Bool) {
         DispatchQueue.main.async {
+            self.isLoading = loading
             if loading {
+                let container = UIButton(type: .custom)
+                container.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+                container.addTarget(self, action: #selector(self.fetchFromAPIAction), for: .touchUpInside)
                 let spinner = UIActivityIndicatorView(style: .medium)
+                spinner.frame = container.bounds
+                spinner.isUserInteractionEnabled = false
                 spinner.startAnimating()
-                self.navigationItem.rightBarButtonItems?[1] = UIBarButtonItem(customView: spinner)
+                container.addSubview(spinner)
+                self.navigationItem.rightBarButtonItems?[1] = UIBarButtonItem(customView: container)
             } else {
                 let btn = UIBarButtonItem(image: UIImage(systemName: "arrow.down.circle"), style: .plain, target: self, action: #selector(self.fetchFromAPIAction))
                 self.navigationItem.rightBarButtonItems?[1] = btn
+            }
+        }
+    }
+    
+    func showFetchDone() {
+        DispatchQueue.main.async {
+            self.isLoading = false
+            let done = UIBarButtonItem(image: UIImage(systemName: "checkmark.circle"), style: .plain, target: nil, action: nil)
+            self.navigationItem.rightBarButtonItems?[1] = done
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                let btn = UIBarButtonItem(image: UIImage(systemName: "arrow.down.circle"), style: .plain, target: self, action: #selector(self.fetchFromAPIAction))
+                self.navigationItem.rightBarButtonItems?[1] = btn
+            }
+        }
+    }
+    
+    func showFetchError() {
+        DispatchQueue.main.async {
+            self.isLoading = false
+            let err = UIBarButtonItem(image: UIImage(systemName: "xmark.circle"), style: .plain, target: nil, action: nil)
+            self.navigationItem.rightBarButtonItems?[1] = err
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                let btn = UIBarButtonItem(image: UIImage(systemName: "arrow.down.circle"), style: .plain, target: self, action: #selector(self.fetchFromAPIAction))
+                self.navigationItem.rightBarButtonItems?[1] = btn
+            }
+        }
+    }    
+    func showPageDone(page: Int, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            let iconName = page <= 50 ? "\(page).circle" : "ellipsis.circle"
+            let btn = UIBarButtonItem(image: UIImage(systemName: iconName), style: .plain, target: self, action: #selector(self.fetchFromAPIAction))
+            self.navigationItem.rightBarButtonItems?[1] = btn
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                guard self.isLoading else { return }
+                self.setLoading(true)
+                completion()
             }
         }
     }
