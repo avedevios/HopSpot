@@ -16,12 +16,6 @@ class BeerCellModel {
         self.controller = controller
     }
     
-    func addFavourite(title: String) {
-        let beer = BeerRealmObject()
-        beer.name = title
-        database.setData(beer: beer)
-    }
-    
     func toggleFavourite(id: Int) {
         database.toggleFavourite(id: id)
     }

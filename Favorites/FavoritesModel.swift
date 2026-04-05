@@ -17,6 +17,7 @@ class FavoritesModel {
     }
     
     func getFavorites() {
-        controller.setFavorites(beers: database.getData())
+        guard let results = database.getData() else { return }
+        controller.setFavorites(beers: results)
     }
 }

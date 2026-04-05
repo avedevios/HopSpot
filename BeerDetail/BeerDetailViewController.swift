@@ -43,6 +43,7 @@ class BeerDetailViewController: UIViewController {
         let item = controller.getListItem()
         nameLabel.text = item.name
         taglineLabel.text = item.tagline
+        abvLabel.text = controller.getFormattedABV()
         
         // Kick off async load of full details
         controller.loadDetails()
@@ -94,8 +95,7 @@ class BeerDetailViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         contentView.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
-            make.top.equalTo(specsStackView.snp.bottom).offset(24)
-            make.centerX.equalToSuperview()
+            make.center.equalTo(beerImageView)
         }
     }
     

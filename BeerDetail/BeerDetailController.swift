@@ -14,7 +14,6 @@ class BeerDetailController {
     private let listItem: BeerListItem
     private var beer: Beer?
     private let networkManager = NetworkManager()
-    private let database = DatabaseManager()
     
     init(view: BeerDetailViewController, listItem: BeerListItem) {
         self.view = view
@@ -23,39 +22,19 @@ class BeerDetailController {
     
     // Called on viewDidLoad — loads full beer details by id
     func loadDetails() {
-        let startTime = Date()
-        print("🍺 BeerDetailController: Loading details for beer id=\(listItem.id ?? 0), name='\(listItem.name)'")
-        
         guard let id = listItem.id else {
-            print("❌ BeerDetailController: No beer ID available")
             view.showError("Beer ID not available")
             return
         }
         
-        // First, check cache
-        if let cachedBeerDetails = database.getCachedBeerDetails(id: id),
-           let beer = database.convertToBeer(cachedBeerDetails) {
-            let loadTime = Date().timeIntervalSince(startTime)
-            print("💾 BeerDetailController: Loaded details from cache for '\(beer.name)' in \(String(format: "%.3f", loadTime))s")
-            self.beer = beer
-            self.view.updateDetails(beer: beer)
-            return
-        }
-        
-        // If not in cache, load from API
         view.showLoading(true)
         networkManager.getBeerDetails(id: id) { [weak self] beer in
             guard let self = self else { return }
-            let loadTime = Date().timeIntervalSince(startTime)
             self.view.showLoading(false)
             if let beer = beer {
-                print("✅ BeerDetailController: Successfully loaded details for '\(beer.name)' from API in \(String(format: "%.2f", loadTime))s")
                 self.beer = beer
-                // Save to cache for future use
-                self.database.saveBeerDetails(beer)
                 self.view.updateDetails(beer: beer)
             } else {
-                print("❌ BeerDetailController: Failed to load beer details after \(String(format: "%.2f", loadTime))s")
                 self.view.showError("Failed to load beer details")
             }
         }
