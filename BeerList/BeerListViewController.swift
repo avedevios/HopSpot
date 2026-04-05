@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BeerListViewController: UIViewController {
     
@@ -36,6 +37,22 @@ class BeerListViewController: UIViewController {
         }
     }
     
+    func insertRows(indexPaths: [IndexPath]) {
+        DispatchQueue.main.async {
+            self.beersTableView.performBatchUpdates({
+                self.beersTableView.insertRows(at: indexPaths, with: .automatic)
+            })
+        }
+    }
+    
+    func beginTableUpdate() {
+        // Not needed anymore
+    }
+    
+    func endTableUpdate() {
+        // Not needed anymore
+    }
+    
     func setupSubviews() {
         
         navigationItem.rightBarButtonItem = createFavoritesBarButton(image: "heart.fill", selector: #selector(favoritesBarButtonAction))
@@ -56,7 +73,9 @@ class BeerListViewController: UIViewController {
 
 extension BeerListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return controller.getBeers().count
+        let count = controller.getBeers().count
+        print("📋 Table view asking for rows, returning: \(count)")
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,6 +104,23 @@ extension BeerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print("Delete logic")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let item = controller.getBeers()[indexPath.row]
+        let detailVC = BeerDetailViewController(listItem: item)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let totalBeers = controller.getBeers().count
+        // Load more when user scrolls to last 10 rows
+        if indexPath.row == totalBeers - 10 {
+            print("📍 Loading more beers...")
+            controller.loadMoreBeers()
         }
     }
 }
