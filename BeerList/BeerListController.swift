@@ -21,6 +21,12 @@ class BeerListController {
         self.model = BeerListModel(controller: self)
     }
     
+    // Testable init — allows injecting a mock database
+    init(view: BeerListViewController, database: DatabaseManagerProtocol) {
+        self.view = view
+        self.model = BeerListModel(controller: self, database: database)
+    }
+    
     func updateTableView() {
         view.reloadTableData()
     }

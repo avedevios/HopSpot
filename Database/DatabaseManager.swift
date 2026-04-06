@@ -8,7 +8,16 @@
 import Foundation
 import RealmSwift
 
-class DatabaseManager {
+protocol DatabaseManagerProtocol {
+    func getCachedBeers() -> [BeerRealmObject]
+    func getFavouriteBeers() -> [BeerRealmObject]
+    func saveBeers(_ beers: [BeerListItem])
+    func isFavourite(id: Int) -> Bool
+    func toggleFavourite(id: Int)
+    func clearCache()
+}
+
+class DatabaseManager: DatabaseManagerProtocol {
     
     private var realm: Realm?
     

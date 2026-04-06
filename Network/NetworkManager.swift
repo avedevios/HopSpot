@@ -7,7 +7,12 @@
 
 import Foundation
 
-class NetworkManager {
+protocol NetworkManagerProtocol {
+    func getBeerList(page: Int, perPage: Int, completion: @escaping ([BeerListItem], Bool) -> ())
+    func getBeerDetails(id: Int, completion: @escaping (Beer?) -> ())
+}
+
+class NetworkManager: NetworkManagerProtocol {
     
     private let session: URLSession = {
         let config = URLSessionConfiguration.default

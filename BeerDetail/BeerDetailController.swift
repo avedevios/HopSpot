@@ -13,11 +13,12 @@ class BeerDetailController {
     
     private let listItem: BeerListItem
     private var beer: Beer?
-    private let networkManager = NetworkManager()
+    private let networkManager: NetworkManagerProtocol
     
-    init(view: BeerDetailViewController, listItem: BeerListItem) {
+    init(view: BeerDetailViewController, listItem: BeerListItem, networkManager: NetworkManagerProtocol = NetworkManager()) {
         self.view = view
         self.listItem = listItem
+        self.networkManager = networkManager
     }
     
     // Called on viewDidLoad — loads full beer details by id
@@ -26,7 +27,11 @@ class BeerDetailController {
             view.showError("Beer ID not available")
             return
         }
-        
+        loadDetails(id: id, completion: nil)
+    }
+
+    // Testable overload with optional completion called after the network response
+    func loadDetails(id: Int, completion: (() -> Void)? = nil) {
         view.showLoading(true)
         networkManager.getBeerDetails(id: id) { [weak self] beer in
             guard let self = self else { return }
@@ -37,6 +42,7 @@ class BeerDetailController {
             } else {
                 self.view.showError("Failed to load beer details")
             }
+            completion?()
         }
     }
     

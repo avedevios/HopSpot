@@ -11,13 +11,15 @@ class BeerListModel {
     
     private weak var controller: BeerListController!
     
-    private var networkManager = NetworkManager()
-    private var database = DatabaseManager()
+    private var networkManager: NetworkManagerProtocol
+    private var database: DatabaseManagerProtocol
     private let perPage = 50
     private var isCancelled = false
     
-    init(controller: BeerListController!) {
+    init(controller: BeerListController!, database: DatabaseManagerProtocol = DatabaseManager(), networkManager: NetworkManagerProtocol = NetworkManager()) {
         self.controller = controller
+        self.database = database
+        self.networkManager = networkManager
     }
         
     func getBeers() {
