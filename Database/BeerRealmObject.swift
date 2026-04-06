@@ -9,5 +9,10 @@ import Foundation
 import RealmSwift
 
 class BeerRealmObject: Object {
-    @objc dynamic var name = ""
+    @Persisted(primaryKey: true) var id: Int?
+    @Persisted var name: String = ""
+    @Persisted var tagline: String = ""
+    @Persisted var abv: Double?
+    @Persisted var isFavorite: Bool = false
 }
+

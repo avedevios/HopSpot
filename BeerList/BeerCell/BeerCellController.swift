@@ -17,7 +17,11 @@ class BeerCellController {
         self.model = BeerCellModel(controller: self)
     }
     
-    func addFavourite(title: String) {
-        model?.addFavourite(title: title)
+    func toggleFavourite(id: Int) {
+        model?.toggleFavourite(id: id)
+    }
+    
+    func isFavourite(id: Int) -> Bool {
+        return model?.isFavourite(id: id) ?? false
     }
 }

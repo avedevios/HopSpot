@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,22 +14,31 @@
 		6D4ECBD6291FEA180023FB6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D4ECBD5291FEA180023FB6E /* Assets.xcassets */; };
 		6D4ECBD9291FEA180023FB6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4ECBD7291FEA180023FB6E /* LaunchScreen.storyboard */; };
 		6D4ECBE1291FEE480023FB6E /* BeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ECBE0291FEE480023FB6E /* BeerCell.swift */; };
-		6D4ECBE5291FF3FF0023FB6E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4ECBE4291FF3FF0023FB6E /* FavoritesView.swift */; };
 		6D6558AC292A1AFA00CB8A0E /* BeerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558AB292A1AFA00CB8A0E /* BeerListModel.swift */; };
 		6D6558AE292A1B0A00CB8A0E /* BeerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558AD292A1B0A00CB8A0E /* BeerListController.swift */; };
 		6D6558B0292A1B2800CB8A0E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558AF292A1B2800CB8A0E /* NetworkManager.swift */; };
-		6D6558B2292A1FB500CB8A0E /* UIViewController+FavoritesBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558B1292A1FB500CB8A0E /* UIViewController+FavoritesBarButton.swift */; };
-		6D6558B5292A208D00CB8A0E /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558B4292A208D00CB8A0E /* FavoritesModel.swift */; };
-		6D6558B7292A214B00CB8A0E /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558B6292A214B00CB8A0E /* FavoritesController.swift */; };
 		6D6558B9292A23A400CB8A0E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6558B8292A23A400CB8A0E /* DatabaseManager.swift */; };
 		6D66A4192F8156F000A68B94 /* BeerRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D66A4182F8156F000A68B94 /* BeerRealmObject.swift */; };
 		6DAD20B2292A2D9200886580 /* BeerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD20B1292A2D9200886580 /* BeerCellModel.swift */; };
 		6DAD20B4292A2DA000886580 /* BeerCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD20B3292A2DA000886580 /* BeerCellController.swift */; };
+		6DAD20B5292A2E0000886580 /* BeerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD20B6292A2E0000886580 /* BeerDetailController.swift */; };
+		6DAD20B7292A2E1000886580 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD20B8292A2E1000886580 /* BeerDetailViewController.swift */; };
 		8A11AA111111111111111111 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A11AA111111111111111113 /* SnapKit */; };
 		8A11AA111111111111111112 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A11AA111111111111111114 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6D2E696C2F846AEE00B03693 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D4ECBC1291FEA100023FB6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D4ECBC8291FEA100023FB6E;
+			remoteInfo = HopSpot;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		6D2E69682F846AEE00B03693 /* HopSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4ECBC9291FEA100023FB6E /* HopSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HopSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4ECBCC291FEA100023FB6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D4ECBCE291FEA100023FB6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,20 +48,29 @@
 		6D4ECBD8291FEA180023FB6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D4ECBDA291FEA180023FB6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D4ECBE0291FEE480023FB6E /* BeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCell.swift; sourceTree = "<group>"; };
-		6D4ECBE4291FF3FF0023FB6E /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		6D6558AB292A1AFA00CB8A0E /* BeerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListModel.swift; sourceTree = "<group>"; };
 		6D6558AD292A1B0A00CB8A0E /* BeerListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListController.swift; sourceTree = "<group>"; };
 		6D6558AF292A1B2800CB8A0E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		6D6558B1292A1FB500CB8A0E /* UIViewController+FavoritesBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FavoritesBarButton.swift"; sourceTree = "<group>"; };
-		6D6558B4292A208D00CB8A0E /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
-		6D6558B6292A214B00CB8A0E /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		6D6558B8292A23A400CB8A0E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6D66A4182F8156F000A68B94 /* BeerRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRealmObject.swift; sourceTree = "<group>"; };
 		6DAD20B1292A2D9200886580 /* BeerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellModel.swift; sourceTree = "<group>"; };
 		6DAD20B3292A2DA000886580 /* BeerCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCellController.swift; sourceTree = "<group>"; };
+		6DAD20B6292A2E0000886580 /* BeerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailController.swift; sourceTree = "<group>"; };
+		6DAD20B8292A2E1000886580 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6D2E69692F846AEE00B03693 /* HopSpotTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HopSpotTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		6D2E69652F846AEE00B03693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D4ECBC6291FEA100023FB6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,14 +86,14 @@
 		6D4ECBC0291FEA100023FB6E = {
 			isa = PBXGroup;
 			children = (
-				6DAD20AF292A2D0E00886580 /* Extensions */,
 				6DAD20AE292A2CB900886580 /* App */,
 				6DAD20AD292A2C6400886580 /* Database */,
 				6DAD20AC292A2C4B00886580 /* Network */,
 				6D4ECBDA291FEA180023FB6E /* Info.plist */,
+				6D2E69692F846AEE00B03693 /* HopSpotTests */,
 				6D4ECBCA291FEA100023FB6E /* Products */,
 				6D66A4162F81562B00A68B94 /* BeerList */,
-				6D66A41A2F81596700A68B94 /* Favorites */,
+				6DAD20B9292A2E2000886580 /* BeerDetail */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				6D4ECBC9291FEA100023FB6E /* HopSpot.app */,
+				6D2E69682F846AEE00B03693 /* HopSpotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,16 +125,6 @@
 				6DAD20B1292A2D9200886580 /* BeerCellModel.swift */,
 			);
 			path = BeerCell;
-			sourceTree = "<group>";
-		};
-		6D66A41A2F81596700A68B94 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				6D4ECBE4291FF3FF0023FB6E /* FavoritesView.swift */,
-				6D6558B6292A214B00CB8A0E /* FavoritesController.swift */,
-				6D6558B4292A208D00CB8A0E /* FavoritesModel.swift */,
-			);
-			path = Favorites;
 			sourceTree = "<group>";
 		};
 		6DAD20AC292A2C4B00886580 /* Network */ = {
@@ -147,17 +156,41 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		6DAD20AF292A2D0E00886580 /* Extensions */ = {
+		6DAD20B9292A2E2000886580 /* BeerDetail */ = {
 			isa = PBXGroup;
 			children = (
-				6D6558B1292A1FB500CB8A0E /* UIViewController+FavoritesBarButton.swift */,
+				6DAD20B6292A2E0000886580 /* BeerDetailController.swift */,
+				6DAD20B8292A2E1000886580 /* BeerDetailViewController.swift */,
 			);
-			path = Extensions;
+			path = BeerDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6D2E69672F846AEE00B03693 /* HopSpotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D2E696E2F846AEE00B03693 /* Build configuration list for PBXNativeTarget "HopSpotTests" */;
+			buildPhases = (
+				6D2E69642F846AEE00B03693 /* Sources */,
+				6D2E69652F846AEE00B03693 /* Frameworks */,
+				6D2E69662F846AEE00B03693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D2E696D2F846AEE00B03693 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6D2E69692F846AEE00B03693 /* HopSpotTests */,
+			);
+			name = HopSpotTests;
+			packageProductDependencies = (
+			);
+			productName = HopSpotTests;
+			productReference = 6D2E69682F846AEE00B03693 /* HopSpotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6D4ECBC8291FEA100023FB6E /* HopSpot */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D4ECBDD291FEA180023FB6E /* Build configuration list for PBXNativeTarget "HopSpot" */;
@@ -186,9 +219,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					6D2E69672F846AEE00B03693 = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = 6D4ECBC8291FEA100023FB6E;
+					};
 					6D4ECBC8291FEA100023FB6E = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -212,11 +249,19 @@
 			projectRoot = "";
 			targets = (
 				6D4ECBC8291FEA100023FB6E /* HopSpot */,
+				6D2E69672F846AEE00B03693 /* HopSpotTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6D2E69662F846AEE00B03693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D4ECBC7291FEA100023FB6E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,29 +275,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6D2E69642F846AEE00B03693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D4ECBC5291FEA100023FB6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6D66A4192F8156F000A68B94 /* BeerRealmObject.swift in Sources */,
-				6D6558B5292A208D00CB8A0E /* FavoritesModel.swift in Sources */,
 				6D6558AE292A1B0A00CB8A0E /* BeerListController.swift in Sources */,
 				6D4ECBD1291FEA100023FB6E /* BeerListViewController.swift in Sources */,
 				6D6558B0292A1B2800CB8A0E /* NetworkManager.swift in Sources */,
-				6D6558B2292A1FB500CB8A0E /* UIViewController+FavoritesBarButton.swift in Sources */,
 				6D4ECBCD291FEA100023FB6E /* AppDelegate.swift in Sources */,
 				6D4ECBCF291FEA100023FB6E /* SceneDelegate.swift in Sources */,
 				6D4ECBE1291FEE480023FB6E /* BeerCell.swift in Sources */,
 				6D6558B9292A23A400CB8A0E /* DatabaseManager.swift in Sources */,
 				6DAD20B4292A2DA000886580 /* BeerCellController.swift in Sources */,
-				6D6558B7292A214B00CB8A0E /* FavoritesController.swift in Sources */,
-				6D4ECBE5291FF3FF0023FB6E /* FavoritesView.swift in Sources */,
 				6DAD20B2292A2D9200886580 /* BeerCellModel.swift in Sources */,
 				6D6558AC292A1AFA00CB8A0E /* BeerListModel.swift in Sources */,
+				6DAD20B5292A2E0000886580 /* BeerDetailController.swift in Sources */,
+				6DAD20B7292A2E1000886580 /* BeerDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D2E696D2F846AEE00B03693 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D4ECBC8291FEA100023FB6E /* HopSpot */;
+			targetProxy = 6D2E696C2F846AEE00B03693 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D4ECBD2291FEA100023FB6E /* Main.storyboard */ = {
@@ -274,6 +332,59 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6D2E696F2F846AEE00B03693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65DRR277K2;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avesoft.HopSpotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HopSpot.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HopSpot";
+			};
+			name = Debug;
+		};
+		6D2E69702F846AEE00B03693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65DRR277K2;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.avesoft.HopSpotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HopSpot.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HopSpot";
+			};
+			name = Release;
+		};
 		6D4ECBDB291FEA180023FB6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -447,6 +558,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6D2E696E2F846AEE00B03693 /* Build configuration list for PBXNativeTarget "HopSpotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D2E696F2F846AEE00B03693 /* Debug */,
+				6D2E69702F846AEE00B03693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6D4ECBC4291FEA100023FB6E /* Build configuration list for PBXProject "HopSpot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
