@@ -76,27 +76,29 @@ class BeerDetailController {
         guard let ingredients = beer?.ingredients else {
             return "No ingredients information available"
         }
-        var result = ""
-        if let malt = ingredients.malt, !malt.isEmpty {
-            result += "Malt:\n"
-            for maltItem in malt {
-                if let name = maltItem.name, let amount = maltItem.amount {
-                    result += "• \(name) - \(amount.value ?? 0) \(amount.unit ?? "")\n"
-                }
-            }
-        }
-        if let hops = ingredients.hops, !hops.isEmpty {
-            result += "\nHops:\n"
-            for hop in hops {
-                if let name = hop.name, let amount = hop.amount, let add = hop.add {
-                    result += "• \(name) - \(amount.value ?? 0) \(amount.unit ?? "") (\(add))\n"
-                }
-            }
-        }
-        if let yeast = ingredients.yeast {
-            result += "\nYeast: \(yeast)\n"
-        }
+        let malt = maltText(from: ingredients)
+        let hops = hopsText(from: ingredients)
+        let yeast = ingredients.yeast.map { "\nYeast: \($0)\n" } ?? ""
+        let result = malt + hops + yeast
         return result.isEmpty ? "No ingredients information available" : result
+    }
+
+    private func maltText(from ingredients: Ingredients) -> String {
+        guard let malt = ingredients.malt, !malt.isEmpty else { return "" }
+        let lines = malt.compactMap { item -> String? in
+            guard let name = item.name, let amount = item.amount else { return nil }
+            return "• \(name) - \(amount.value ?? 0) \(amount.unit ?? "")"
+        }
+        return lines.isEmpty ? "" : "Malt:\n" + lines.joined(separator: "\n") + "\n"
+    }
+
+    private func hopsText(from ingredients: Ingredients) -> String {
+        guard let hops = ingredients.hops, !hops.isEmpty else { return "" }
+        let lines = hops.compactMap { hop -> String? in
+            guard let name = hop.name, let amount = hop.amount, let add = hop.add else { return nil }
+            return "• \(name) - \(amount.value ?? 0) \(amount.unit ?? "") (\(add))"
+        }
+        return lines.isEmpty ? "" : "\nHops:\n" + lines.joined(separator: "\n") + "\n"
     }
     
     func getBrewersTipsText() -> String {

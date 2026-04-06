@@ -46,6 +46,7 @@ private func makeBeer(abv: Double? = nil, ibu: Double? = nil, ebc: Double? = nil
 // MARK: - Tests
 
 @Suite("BeerDetailController formatting")
+@MainActor
 struct BeerDetailControllerTests {
 
     // MARK: getFormattedABV

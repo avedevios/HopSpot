@@ -25,7 +25,7 @@ class BeerListViewController: UIViewController {
     
     private lazy var beersTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(BeerCell.self, forCellReuseIdentifier: "beer_cell")
+        tableView.register(BeerCell.self, forCellReuseIdentifier: BeerCell.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -162,12 +162,9 @@ extension BeerListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "beer_cell", for: indexPath) as! BeerCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BeerCell.reuseIdentifier, for: indexPath) as! BeerCell
         let beer = controller.getBeers()[indexPath.row]
         cell.configure(with: beer, isFavourite: controller.isFavourite(id: beer.id))
-        cell.beerNameLabel.text = beer.name
-        let abvText = beer.abv.map { String(format: "ABV %.1f%%", $0) } ?? "ABV n/a"
-        cell.beerSubtitleLabel.text = "\(beer.tagline) • \(abvText)"
         cell.onFavouriteToggled = { [weak self] in
             self?.controller.refreshIfNeeded()
         }

@@ -34,6 +34,7 @@ class MockDatabaseManager: DatabaseManagerProtocol {
 }
 
 @Suite("BeerListController basic logic")
+@MainActor
 struct BeerListControllerTests {
 
     // toggleFavourites should flip the flag and call updateFavouritesButton

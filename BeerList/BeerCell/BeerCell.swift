@@ -10,8 +10,9 @@ import SnapKit
 
 class BeerCell: UITableViewCell {
     
+    static let reuseIdentifier = "beer_cell"
+    
     private var controller: BeerCellController!
-    private var didSetupViews = false
     private var beerId: Int?
     
     lazy var beerNameLabel: UILabel = {
@@ -37,17 +38,20 @@ class BeerCell: UITableViewCell {
         return button
     }()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        guard !didSetupViews else { return }
-        didSetupViews = true
-
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         controller = BeerCellController(view: self)
-
-        addSubview(likeButton)
-        addSubview(beerNameLabel)
-        addSubview(beerSubtitleLabel)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        contentView.addSubview(likeButton)
+        contentView.addSubview(beerNameLabel)
+        contentView.addSubview(beerSubtitleLabel)
 
         likeButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -82,6 +86,9 @@ class BeerCell: UITableViewCell {
     
     func configure(with item: BeerListItem, isFavourite: Bool) {
         beerId = item.id
+        beerNameLabel.text = item.name
+        let abvText = item.abv.map { String(format: "ABV %.1f%%", $0) } ?? "ABV n/a"
+        beerSubtitleLabel.text = "\(item.tagline) • \(abvText)"
         let icon = isFavourite ? "heart.fill" : "heart"
         likeButton.setImage(UIImage(systemName: icon), for: .normal)
     }
